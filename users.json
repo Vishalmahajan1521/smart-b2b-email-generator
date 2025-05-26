@@ -1,0 +1,24 @@
+{
+  "mahajanvishal1521@gmail.com": {
+    "salesperson_name": "Vishal Mahajan",
+    "salesperson_title": "Sales Manager",
+    "salesperson_company": "SecureTech Solutions",
+    "salesperson_email": "mahajanvishal1521@gmail.com",
+    "salesperson_mobile": "9421683835",
+    "salesperson_website": "www.securetechsolutions.com",
+    "salesperson_linkedin": "https://www.linkedin.com/in/vishal-mahajan-a60381258/",
+    "password": "Vishal@1521",
+    "created_at": "2025-05-10T17:52:31.180745"
+  },
+  "harsh@gmail.com": {
+    "salesperson_name": "Harsh Mahale",
+    "salesperson_title": "Sales Manager",
+    "salesperson_company": "SecureTech Solutions",
+    "salesperson_email": "harsh@gmail.com",
+    "salesperson_mobile": "7412589633",
+    "salesperson_website": "SecureTech Solutions",
+    "salesperson_linkedin": "https://www.linkedin.com/in/vishal-mahajan-a60381258/",
+    "password": "harsh123",
+    "created_at": "2025-05-10T19:40:20.882822"
+  }
+}
