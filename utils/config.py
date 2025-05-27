@@ -1,17 +1,10 @@
 import os
 from dotenv import load_dotenv
-import nltk
 
 load_dotenv()
 gemini_api_key = os.getenv("GEMINI_API_KEY")
 news_api_key = os.getenv("NEWS_API")
 serper_api_key = os.getenv("SERPER_API_KEY")
-
-try:
-    nltk.download('punkt', quiet=True)
-    nltk.download('stopwords', quiet=True)
-except:
-    pass
 
 DEFAULT_KEYWORDS = [
     "cloud", "AI", "artificial intelligence", "ML", "machine learning", 
