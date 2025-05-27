@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 from utils.news_fetcher import fetch_news
-from utils.summarizer import summarize_news, load_summarization_model
+from utils.summarizer import summarize_news, configure_gemini
 from utils.sales_context import generate_sales_context, generate_email_pitch, setup_graph
 from utils.ui_components import (
     analyze_news_relevance, 
@@ -88,7 +88,7 @@ def main():
         st.stop()
 
     with st.spinner("Loading models..."):
-        tokenizer, model = load_summarization_model()
+        gemini_model = configure_gemini()
         graph = setup_graph(gemini_api_key)
 
     # Main application
@@ -226,7 +226,7 @@ def main():
                         progress_text.text(f"Step 2/4: Summarizing {len(prospect_articles)} news articles for {prospect_company}...")
                         summaries = []
                         for i, article in enumerate(prospect_articles[:max_articles]):  # Limit to max_articles
-                            summary = summarize_news(article, tokenizer, model)
+                            summary = summarize_news(article, gemini_model)
                             if summary:
                                 summaries.append(summary)
                             sub_progress = 0.25 + (i + 1) / max(1, len(prospect_articles)) * 0.25
@@ -238,7 +238,7 @@ def main():
                     if competitor_articles:
                         progress_text.text(f"Summarizing {len(competitor_articles)} news articles for {competitor_company}...")
                         for i, article in enumerate(competitor_articles[:min(2, max_articles)]):  # Limit to 2 or max_articles
-                            summary = summarize_news(article, tokenizer, model)
+                            summary = summarize_news(article, gemini_model)
                             if summary:
                                 competitor_summaries.append(summary)
                             sub_progress = 0.25 + (i + 1) / max(1, len(competitor_articles)) * 0.25
@@ -367,7 +367,7 @@ def main():
                                 progress_text.text(f"Step 2/4: Summarizing {len(prospect_articles)} news articles for {row['prospect_company']}...")
                                 summaries = []
                                 for i, article in enumerate(prospect_articles[:max_articles]):  # Limit to max_articles
-                                    summary = summarize_news(article, tokenizer, model)
+                                    summary = summarize_news(article, gemini_model)
                                     if summary:
                                         summaries.append(summary)
                                     sub_progress = base_progress + 0.25 * prospect_weight + (i + 1) / max(1, len(prospect_articles)) * 0.25 * prospect_weight
@@ -379,7 +379,7 @@ def main():
                             if competitor_articles:
                                 progress_text.text(f"Summarizing {len(competitor_articles)} news articles for {competitor_company}...")
                                 for i, article in enumerate(competitor_articles[:min(2, max_articles)]):  # Limit to 2 or max_articles
-                                    summary = summarize_news(article, tokenizer, model)
+                                    summary = summarize_news(article, gemini_model)
                                     if summary:
                                         competitor_summaries.append(summary)
                                     sub_progress = base_progress + 0.25 * prospect_weight + (i + 1) / max(1, len(competitor_articles)) * 0.25 * prospect_weight
