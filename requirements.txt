@@ -1,6 +1,10 @@
-streamlit==1.18.0
+streamlit==1.31.0              # ✅ Upgraded to match latest features and Altair
+altair==5.0.1                  # ✅ Compatible with Streamlit >=1.30
 transformers==4.44.0
 langchain-groq==0.2.0
+langgraph==0.2.20              # ✅ Works with langchain-core 0.3.61
+langchain-core==0.3.61
+google-generativeai==0.8.3
 python-dotenv==1.0.1
 requests==2.28.2
 pandas==2.2.2
@@ -10,7 +14,3 @@ sentence-transformers==2.2.2
 requests-cache==1.2.0
 tf-keras==2.15.0
 torch==2.2.2
-google-generativeai==0.8.3
-langgraph==0.2.20
-langchain-core==0.3.61
-altair==5.0.0
